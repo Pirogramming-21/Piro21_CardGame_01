@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{%static 'posts/css/reset.css'%}">
+<link rel="stylesheet" href="{%static 'posts/css/style.css'%}">
+
+{% block content %}
+    <section class="attack_container">
+        <h2>반격할 카드:</h2>
+        <form action="{% url 'game:attack' pk %}" method="POST" class="attack_form">
+            {% csrf_token %}{{form.as_p}}
+            <hr>
+            <button type="submit" class="submit_btn">CounterAttack</button>
+        </form>
+    </section>
+{% endblock %}
