@@ -1,15 +1,32 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+.submit_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: none;
+}
+
 .ranking_container {
-    position: relative;
     width: 80%;
-    height: 80vh;
+    height: auto;
+    background-image: url(../images/game_background.jpg);
+    background-size :  contain;
+    background-repeat: no-repeat;
+    background-position: center;
     text-align: center;
     flex-direction: column;
     align-items: center;
-    background-color: aliceblue;
 }
-
+#ranking_content{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
 #ranking-title {
-    padding: 10px 50px;
+    margin-bottom: 10px;
+    font-size: 25px;
 }
 
 #ranking-123 {
@@ -18,7 +35,7 @@
     justify-content: center;
     align-items: flex-end;
     text-align: center;
-    height: 80%;
+    height: 62%;
 }
 
 #ranking-123 > div {
@@ -27,29 +44,48 @@
 }
 
 #ranking-1 {
-    height: 200px;
+    height: 300px;
     background-color: gold;
+    font-weight: 900;
+    font-size: 30px;
 }
 
 #ranking-2 {
-    height: 150px;
+    height: 200px;
     background-color: silver;
+    font-weight: 900;
+    font-size: 30px;
 }
 
 #ranking-3 {
     height: 100px;
     background-color: burlywood;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.ranking-text {
+    background-color: var(--main-color);
+    color: white;
+    font-size: larger;
+    font-weight: 600;
 }
 
 .submit_center {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    margin: auto 0;
-    bottom: 20px;   
+    display: flex;
+    justify-content: center;
 }
 
 .submit_center > a{
-    background-color: aqua;
-    border-radius: 10px;
+    background-color: var(--gray-color);
+    width: 160px;
+    height: 40px;
+    font-size: 25px;
+}
+
+.to_list {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
