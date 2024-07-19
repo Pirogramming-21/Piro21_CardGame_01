@@ -1,7 +1,6 @@
 from django import forms
-from .models import Game
+from .models import Game, Users
 import random as rd
-from apps.users.models import Users
 
 
 def shuffle_card():
@@ -38,7 +37,6 @@ class AttackForm(forms.ModelForm):
             )
 
     revenger = forms.ModelChoiceField(queryset=Users.objects.all(), label="Revenger")
-
 
 
 class RevengeForm(forms.ModelForm):

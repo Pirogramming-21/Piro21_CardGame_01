@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
-{% load static %} 
+{% load static %}
+<link rel="stylesheet" href="../../static/css/history.css">
 {%block content%}
-
 <div id="history_list">
   <div id="history_list_container">
     <div id="history_list_title">
@@ -58,7 +58,6 @@
             {% else %}
                 <a class="history_list_detail" href="{% url 'game:revenge' game.pk %}">revenge</a>
                 <a class="history_list_detail" href="{% url 'game:detail_revenge' game.pk %}"> 게임정보 </a>
-            {% endif %}
         {% endif%}
       </li>
       {% endfor %}

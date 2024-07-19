@@ -2,21 +2,18 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-    <head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+    {% block head %}
 
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'css/main.css' %}?after">
-    
-        <title>피로그래머 카드게임</title>
-
-
-    </head>
-    <body>
-        {% include 'navbar.html'%}
-
-        {% block content %}<!-- 여기 내용-->{% endblock %}
-
-        {% include 'footer.html'%}
-    </body>
+    {% endblock %}
+</head>
+<body>
+    {% include 'navbar.html'%}
+    {% block content %}<!-- 여기 내용-->{% endblock %}
+    {% include 'footer.html'%}
+</body>
 </html>

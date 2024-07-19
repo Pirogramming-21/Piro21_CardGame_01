@@ -7,9 +7,8 @@
         <h3 id="ranking-title">Piro 명예의 전당</h3>
         <div id="ranking-123">
             {% with sorted_users=user_list|dictsortreversed:"user_score" %}
-                {% comment %} {% for user in sorted_users|slice:":3" %} {% endcomment %}
+                {% for user in sorted_users|slice:":3" %}
                     {% if forloop.counter == 2 %}
-                        {% with user2=user %}
                         <div>
                             <div class="ranking-text">
                                 <p>{{ user.username }}</p>
@@ -17,9 +16,7 @@
                             </div>
                             <div id="ranking-2">2</div>
                         </div>
-                        {% endwith %}
                     {% elif forloop.counter == 1 %}
-                        {% with user1=user %}
                         <div>
                             <div class="ranking-text">
                                 <p>{{ user.username }}</p>
@@ -27,9 +24,7 @@
                             </div>
                             <div id="ranking-1">1</div>
                         </div>
-                        {% endwith %}
                     {% elif forloop.counter == 3 %}
-                        {% with user3=user %}
                         <div>
                             <div class="ranking-text">
                                 <p>{{ user.username }}</p>
@@ -37,12 +32,11 @@
                             </div>
                             <div id="ranking-3">3</div>
                         </div>
-                        {% endwith %}
                     {% endif %}
                 {% endfor %}
             {% endwith %}
         </div>
-        <div class="submit_center"><a href="{% url 'game/history' %}" class="to_list">전적 목록</a></div>
+        <div class="submit_center"><a href="{% url 'game:history' %}" class="to_list">전적 목록</a></div>
     </div>
 </section>
 {% endblock %}

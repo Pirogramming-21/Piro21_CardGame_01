@@ -3,6 +3,7 @@ from .models import Game
 from apps.users.models import Users
 from .forms import GameForm, AttackForm, RevengeForm
 import random as rd
+from django.db.models import Q
 
 
 # Create your views here.
@@ -117,7 +118,6 @@ def detail_result(req, pk):
 
 
 
-
 from django.db.models import Q
 
 
@@ -142,7 +142,6 @@ def game_delete(request, pk):
     if request.method == "POST":
         Game.objects.get(id=pk).delete()
     return redirect("game:history")
-
 
 def progressing_result(request, pk):
     game = get_object_or_404(Game, pk=pk)

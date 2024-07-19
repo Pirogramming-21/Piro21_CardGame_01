@@ -7,12 +7,14 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("users", "0001_initial"),
+
     ]
 
     operations = [
         migrations.AlterField(
             model_name="users",
             name="user_name",
+
             field=models.CharField(max_length=10),
         ),
     ]
