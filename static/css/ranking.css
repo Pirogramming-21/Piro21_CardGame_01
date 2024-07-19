@@ -1,0 +1,70 @@
+.ranking_container {
+    background-image: url(../images/game_background.jpg);
+    background-size: contain;
+    position: relative;
+    width: 80%;
+    height: 80vh;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#ranking-title {
+    padding: 10px 50px;
+    margin-top: 120px;
+    font-size: 25px;
+}
+
+#ranking-123 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    text-align: center;
+    height: 62%;
+}
+
+#ranking-123 > div {
+    width: 20%;
+    margin-bottom: 30px
+}
+
+#ranking-1 {
+    height: 300px;
+    background-color: gold;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+#ranking-2 {
+    height: 200px;
+    background-color: silver;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+#ranking-3 {
+    height: 100px;
+    background-color: burlywood;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.ranking-text {
+    background-color: var(--main-color);
+    color: white;
+    font-size: larger;
+    font-weight: 600;
+}
+
+.submit_center {
+    display: flex;
+    justify-content: center;
+}
+
+.submit_center > a{
+    background-color: var(--gray-color);
+    width: 160px;
+    height: 40px;
+    font-size: 25px;
+}

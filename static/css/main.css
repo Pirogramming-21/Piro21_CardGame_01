@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'DungGeunMo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --main-color: #11109B;
+    --gray-color: #A6A7AD;
+    --main-font: "DungGeunMo";
+    --main-border: 2px solid black;
+}
+
 /*nav*/
 * {
     margin: 0;
@@ -106,7 +120,7 @@ section {
 }
 
 .btn_game, .btn_history, .btn_signup {
-    background-color: var(--gray-color);
+    background-color: var(--main-color);
     cursor: pointer;
     padding: 5px 20px;
     border-radius: 15px;

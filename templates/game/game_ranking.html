@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{%static 'game/css/reset.css' %}">
+    <link rel="stylesheet" href="{%static 'css/ranking.css' %}">
+{% endblock %}
 {% block content %}
-
 <section class="submit_container">
-    <div class="submit_modal">
-        <h3 id="ranking-title">Piro 명예의 전당</h3>
+    <div class="ranking_container">
+        <h3 id="ranking-title">👑🎉 Piro 명예의 전당 🎉👑</h3>
         <div id="ranking-123">
             {% with sorted_users=user_list|dictsortreversed:"user_score" %}
                 {% for user in sorted_users|slice:":3" %}

@@ -1,0 +1,44 @@
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--main-font);
+    background-image: url('../../images/blue_screen.png');
+    background-size :  contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#detail__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 200px;
+    background-color: transparent;
+    background-image: url('../../images/game_background.jpg');
+    background-size :  contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    gap: 10px;
+}
+
+.detail__btn {
+    font-size: .8rem;
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: center; 
+    background-color: var(--main-color);
+    border: none; 
+    border-radius: 5px;
+    text-decoration: none; 
+    cursor: pointer;
+    color: white;
+    font-family: var(--main-font);
+    margin: 5px 0;
+}
+
+#history_list_result {
+    margin-bottom: 10px;
+}
