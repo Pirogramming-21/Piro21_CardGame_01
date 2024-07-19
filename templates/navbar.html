@@ -12,6 +12,8 @@
     {% else %}<!--로그인하지 않은 상태일 때 출력-->
     <div id="nav_menu">
         <a href='{% url "users:login" %}'>로그인</a>
+        {% load socialaccount %}
+        <a href="{% provider_login_url 'naver' %}">네이버로그인</a>
         <a href='{% url "users:signup" %}'>회원가입</a>
     </div>
     {% endif %}
