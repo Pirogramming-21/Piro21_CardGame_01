@@ -15,7 +15,7 @@
             <button class="btn_game"><a href="{% url 'game:attack' %}">start</a></button>
             <button class="btn_history"><a href="{% url 'game:game_list'%}">list</a></button>
             {% else %}
-            <button class="btn_game"><a href="{% url 'common:login' %}">start</a></button>
+            <button class="btn_game"><a href="{% url 'users:login' %}">start</a></button>
             {% endif %}
         </div>
     </div>
