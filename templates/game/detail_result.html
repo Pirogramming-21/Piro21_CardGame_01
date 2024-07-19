@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section>
+        <div class="detail_container">
+            <div class="revenge_versus">
+                {{game.id}} - {{game.attacker}} VS {{game.revenger}}
+            </div>
+            <hr>
+            {% if game.bigorsmall == True %}
+            <p>숫자가 큰 사람이 이깁니다.</p>
+            {% else %}
+            <p>숫자가 작은 사람이 이깁니다.</p>
+            {% endif %}
+            <div id= "selected_card">
+                <p>{{game.attacker}} : {{game.attacker_card}}</p>
+                <p>{{game.revenger}} : {{game.revenger_card}}</p>
+            </div>
+            {% if user_winner == 0 %}
+            <p>패배</p>
+            {% elif user_winner == 2 %}
+            <p>승리</p>
+            {% else %}
+            <p>무승부</p>
+            {% endif %}
+            <hr>
+            <p>점수 : {{user_score}}</p>
+            <form action="{% url 'game:list' %}">
+                {% csrf_token %}
+                <button class = "submit_btn">전적목록</button>
+            </form>
+        </div>
+    </section>
+{% endblock content %}
