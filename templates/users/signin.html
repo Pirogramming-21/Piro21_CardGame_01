@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %}
+<section class="submit_container">
+    <div class="submit_modal">
+        <form method="POST">
+        {% csrf_token %} {{user_form.as_p}}
+        <div class="submit_center">
+            <button type="submit" class="submit_btn">회원가입하기</button>
+        </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
