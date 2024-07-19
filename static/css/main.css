@@ -49,6 +49,7 @@ footer > span{
 /**/
 section{
     height: 84vh;
+    background-color: blue;
     /*배경사진추가*/
     /*background-image: url(../images/background.jpg);*/
 
