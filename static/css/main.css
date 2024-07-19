@@ -32,6 +32,8 @@ nav {
     justify-content:space-between;
     display: flex; 
     flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
 
 }
 
@@ -45,11 +47,14 @@ nav > div {
     display: flex;
     align-items: flex-start;
     gap: 3rem;
+    margin: 0;
+    margin-right: 30px;
 }
 
 #nav_title {
     display: flex;
     align-items: flex-start;
+    margin-left: 20px;
 }
 
 #nav_menu > a, #nav_title > a {
@@ -64,7 +69,7 @@ footer{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding-right: 50px;
+    padding-right: 30px;
 }
 
 footer > span{
