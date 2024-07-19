@@ -3,7 +3,7 @@
     <div id="nav_title">
         <a href='/'>Pirogrammer Card Game</a>
     </div>
-    {% if logined%}<!--로그인한 상태일 때 출력-->
+    {% if user.is_authenticated %}<!--로그인한 상태일 때 출력-->
     <div id="nav_menu">
         <a href='{% url "game:attack" %}'>게임하기</a>
         <a href='{% url "game:ranking" %}'>랭킹보기</a>
