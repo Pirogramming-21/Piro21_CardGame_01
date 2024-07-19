@@ -90,7 +90,7 @@ def revenge(request, pk):
             game = form.save()
             user_result, user_score = findWinner(game, request.user)
             ctx = {
-                "game": revenge,
+                "game": game,
                 "user_result": user_result,
                 "user_score": user_score,
             }

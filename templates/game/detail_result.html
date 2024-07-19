@@ -17,9 +17,9 @@
                 <p>{{game.attacker}} : {{game.attacker_card}}</p>
                 <p>{{game.revenger}} : {{game.revenger_card}}</p>
             </div>
-            {% if user_winner == 0 %}
+            {% if user_result == 0 %}
             <p>패배</p>
-            {% elif user_winner == 2 %}
+            {% elif user_result == 2 %}
             <p>승리</p>
             {% else %}
             <p>무승부</p>
