@@ -1,3 +1,4 @@
+
 /*nav*/
 * {
     margin: 0;
@@ -49,7 +50,7 @@ footer > span{
 section{
     height: 84vh;
     /*배경사진추가*/
-    background-image: url(../img/background.jpg);
+    /*background-image: url(../images/background.jpg);*/
 
 }
 
@@ -58,7 +59,6 @@ section{
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-direction: column;
 
 }

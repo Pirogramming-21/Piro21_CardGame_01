@@ -13,4 +13,6 @@ class SignupForm(UserCreationForm):
         username = self.cleaned_data.get("username")
         if Users.objects.filter(user_name=username).exists():
             raise ValidationError("This username is already taken.")
+
         return username
+

@@ -59,4 +59,6 @@ def login(req):
 
 def logout(req):
     auth.logout(req)
+
     return redirect("users:main")
+

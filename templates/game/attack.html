@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
-<link rel="stylesheet" href="{%static 'posts/css/reset.css'%}">
-<link rel="stylesheet" href="{%static 'posts/css/style.css'%}">
-
+<link rel="stylesheet" href="{%static 'game/css/reset.css'%}">
+<link rel="stylesheet" href="{%static 'game/css/attack.css'%}">
+<link rel="stylesheet" href="./../../static/game/attack.css">
 {% block content %}
-    <section class="attack_container">
-        <h2>공격~</h2>
-        <form action="{% url 'game:attack' pk %}" method="POST" class="attack_form">
-            {% csrf_token %}{{form.as_p}}
-            <hr>
-            <button type="submit" class="submit_btn">CounterAttack</button>
-        </form>
+    <section class="attack__container">
+        <div class="attack__form">
+            <div id="attack__title">ATTACK</div>
+            <div id="card__title">내가 고른 카드</div>
+            <form action="{% url 'game:attack'}" method="POST" class="attack_form">
+                {% csrf_token %}{{form.as_p}}
+                <hr>
+                <button type="submit" class="submit_btn">Attack</button>
+            </form>
+        </div>
     </section>
 {% endblock %}
