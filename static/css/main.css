@@ -1,0 +1,93 @@
+/*nav*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: white;
+}
+
+
+nav {
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    height: 8vh;
+    justify-content:space-between;
+}
+
+nav > div {
+    margin: 0 10rem;
+    color: white;
+}
+
+#nav_menu {
+    display: flex;
+    gap: 3rem;
+}
+
+#nav_menu > a {
+    color:white;
+}
+
+/*footer*/
+footer{
+    height: 8vh;
+    background-color: blue;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 50px;
+}
+
+footer > span{
+    color: white;
+}
+
+/**/
+section{
+    height: 84vh;
+    /*배경사진추가*/
+    background-image: url(../images/background.jpg);
+
+}
+
+.main_container{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+}
+/*
+.main_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+
+}
+    */
+.main_title>p{
+    font-size: 60px;
+    font-weight: bold;
+    color : blue;
+}
+
+
+.btns {
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+
+}
+
+.btn_game, .btn_history, .btn_signup {
+    background-color: blue;
+    cursor: pointer;
+    padding: 5px 20px;
+    border-radius: 15px;
+}

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Game
+from .models import Game, Users
 import random as rd
 
 
