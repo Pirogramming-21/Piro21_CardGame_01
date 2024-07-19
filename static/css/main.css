@@ -46,10 +46,10 @@ footer > span{
 }
 
 /**/
-section{
+section {
     height: 84vh;
     /*배경사진추가*/
-    background-image: url(../images/background.jpg);
+    background-color: blue;
     background-size: cover;
 }
 
@@ -74,7 +74,7 @@ section{
 .main_title>p{
     font-size: 60px;
     font-weight: bold;
-    color : blue;
+    color : white;
 }
 
 
