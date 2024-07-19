@@ -12,22 +12,27 @@ def shuffle_card():
     return rd_num
 
 
-def attack(req):
-    if req.method == "POST":
-        form = AttackForm(req.POST, user=req.user)
+def attack(request):
+    if request.method == "POST":
+        form = AttackForm(request.POST, user=request.user)
         if form.is_valid():
             attack = form.save(commit=False)
             attack.attacker_card = form.cleaned_data["card"]
+            attack.revenger = form.cleaned_data["revenger"]
             attack.save()
-            ctx = {"form": form, "attack": attack}
-            return render(req, "game/revenge.html", ctx)
+
+            # 공격 후 적절한 페이지로 리다이렉트
+            return redirect("users:main")
         else:
-            return render(req, "game/detail_result.html", {"form": form})
+            # 폼이 유효하지 않을 때, 폼과 함께 오류 페이지를 렌더링합니다.
+            ctx = {"form": form}
+            return render(request, "game/attack.html", ctx)
 
     else:
-        form = AttackForm(user=req.user)
+        # GET 요청 시, 빈 폼을 생성합니다.
+        form = AttackForm(user=request.user)
         ctx = {"form": form}
-        return render(req, "game/detail_result.html", ctx)
+        return render(request, "game/attack.html", ctx)
 
 
 def detail_attack(req, pk):
@@ -114,34 +119,37 @@ def detail_revenge(req, pk):
     ctx = {"game": game}
     return render(req, "game/detail_revenge.html", ctx)
 
-def detail_result(req, pk):
-    game = Game.objects.get(id=pk)
-    user_winner, user_score = findWinner(game,req.user)
-    ctx = {'game':game, 'user_winner': user_winner, 'user_score': user_score}
-    return render(req, 'game/detail_result.html', ctx)
 
-def history(request):     
-    player = request.user # 요청으로 들어온 (=현재 로그인 플레이어) 플레이어를 받아옴     
-    games = Game.objects.filter(Q(attacker = player) | Q(revenger=player)).order_by('-created_date')     
-    # 공격자 또는 수비자 둘 중 하나라도 플레이어와 일치하는 모든 결과 기록들을 내림차순으로 가져옴     
-    list = {'games':games}     
-    return render(request, 'game/history.html', list)
+from django.db.models import Q
+
+
+def history(request):
+    player = request.user  # 요청으로 들어온 (=현재 로그인 플레이어) 플레이어를 받아옴
+    games = Game.objects.filter(Q(attacker=player) | Q(revenger=player)).order_by(
+        "-created_date"
+    )
+    # 공격자 또는 수비자 둘 중 하나라도 플레이어와 일치하는 모든 결과 기록들을 내림차순으로 가져옴
+    list = {"games": games}
+    return render(request, "game/history.html", list)
+
 
 def ranking(request):
-    user_list = Users.objects.order_by('-user_score')
+    user_list = Users.objects.order_by("-user_score")
     if len(user_list) >= 3:
         user_list = user_list[:3]
-    return render(request, 'game/game_ranking.html', {'user_list':user_list})
+    return render(request, "game/game_ranking.html", {"user_list": user_list})
+
 
 def game_delete(request, pk):
-    if request.method == 'POST':
+    if request.method == "POST":
         Game.objects.get(id=pk).delete()
-    return redirect('game:game_list')
+    return redirect("game:game_list")
+
 
 def progressing_result(request, pk):
     game = get_object_or_404(Game, pk=pk)
     attacker = game.attacker
     revenger = game.revenger
 
-    data = {'game':game, 'attacker':attacker, 'revenger':revenger}
-    return render(request, 'game/progressing_result.html', data)
+    data = {"game": game, "attacker": attacker, "revenger": revenger}
+    return render(request, "game/progressing_result.html", data)

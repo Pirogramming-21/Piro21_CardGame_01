@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{%static 'posts/css/reset.css'%}">
+<link rel="stylesheet" href="{%static 'posts/css/style.css'%}">
+
+{% block content %}
+    <section>
+        <div class="detail_container">
+            <div class="attack_versus">
+                {{game.id}} - {{game.attacker}} VS {{game.revenger}}
+            </div>
+            <div class="do_next">
+                <form action = "{% url 'game:attack' game.pk %}" method="get">
+                    {% csrf_token %}
+                    <button class="submit_btn">대응하기</button>
+                    <a href="{% url 'game:list' %}" class="btn btn-primary">전적목록</a>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
