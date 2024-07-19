@@ -26,7 +26,7 @@
             {% endif %}
             <hr>
             <p>점수 : {{user_score}}</p>
-            <form action="{% url 'game:list' %}">
+            <form action="{% url 'game:history' %}">
                 {% csrf_token %}
                 <button class = "submit_btn">전적목록</button>
             </form>

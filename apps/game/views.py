@@ -11,22 +11,21 @@ def shuffle_card():
     return rd_num
 
 
-def attack(req):
-    if req.method == "POST":
-        form = AttackForm(req.POST, user=req.user)
+def attack(request):
+    if request.method == "POST":
+        game = Game()
+        form = AttackForm(request.POST, instance=game)
         if form.is_valid():
-            attack = form.save(commit=False)
-            attack.attacker_card = form.cleaned_data["card"]
-            attack.save()
-            ctx = {"form": form, "attack": attack}
-            return render(req, "game/revenge.html", ctx)
-        else:
-            return render(req, "game/detail_result.html", {"form": form, "game": game})
-
+            game = form.save(commit=False)
+            if game.revenger != None and game.revenger != request.user:
+                game.attacker = request.user
+                game.bigorsmall = rd.randint(0, 1)
+                game.save()
+                return redirect("/")  # 추후 detail 이동으로 수정
     else:
-        form = AttackForm(user=req.user)
-        ctx = {"form": form, "game": game}
-        return render(req, "game/detail_result.html", ctx)
+        game = Game()
+        form = AttackForm(request=request, instance=game)
+    return render(request, "game/attack.html", {"form": form})
 
 
 def detail_attack(req, pk):
@@ -118,3 +117,41 @@ def detail_result(req, pk):
     user_winner, user_score = findWinner(game,req.user)
     ctx = {'game':game, 'user_winner': user_winner, 'user_score': user_score}
     return render(req, 'game/detail_result.html', ctx)
+
+
+
+
+
+from django.db.models import Q
+
+
+def history(request):
+    player = request.user  # 요청으로 들어온 (=현재 로그인 플레이어) 플레이어를 받아옴
+    games = Game.objects.filter(Q(attacker=player) | Q(revenger=player)).order_by(
+        "-created_date"
+    )
+    # 공격자 또는 수비자 둘 중 하나라도 플레이어와 일치하는 모든 결과 기록들을 내림차순으로 가져옴
+    list = {"games": games}
+    return render(request, "game/history.html", list)
+
+
+def ranking(request):
+    user_list = Users.objects.order_by("-user_score")
+    if len(user_list) >= 3:
+        user_list = user_list[:3]
+    return render(request, "game/game_ranking.html", {"user_list": user_list})
+
+
+def game_delete(request, pk):
+    if request.method == "POST":
+        Game.objects.get(id=pk).delete()
+    return redirect("game:game_list")
+
+
+def progressing_result(request, pk):
+    game = get_object_or_404(Game, pk=pk)
+    attacker = game.attacker
+    revenger = game.revenger
+
+    data = {"game": game, "attacker": attacker, "revenger": revenger}
+    return render(request, "game/progressing_result.html", data)

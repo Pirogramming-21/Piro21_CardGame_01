@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section>
+  <div class="detail_container">
+    <div class="detail_modal">
+      <div class="detail_vs_users">{{game.id}} - {{game.attacker}} VS {{game.revenger}}</div>
+      <p>진행중...</p>
+      <div id="score_board">
+        <p>나: {{game.attacker_card}}</p>
+      </div>
+      <div class="delete_container">
+        <form action="{% url 'game:game_delete' game.pk %}" method="post">
+          {% csrf_token %}
+          <button class="submit_btn">게임취소</button>
+          </form>
+        </div>
+        <div class='delete_container'>
+          <form action="{% url 'game:history'%}">
+            {% csrf_token %}
+            <button class="submit_btn">전적목록</button>
+            </form>
+        </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
