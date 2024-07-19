@@ -7,10 +7,6 @@
         <div class="attack__form">
             <div id="attack__title">ATTACK</div>
             <div id="card__title">내가 고른 카드</div>
-<<<<<<< HEAD
-=======
-            
->>>>>>> de10353 ([feat] attack 함수 수정)
             <form action="{% url 'game:attack' %}" method="POST" class="attack_form">
                 {% csrf_token %}{{form.as_p}}
                 <hr>
