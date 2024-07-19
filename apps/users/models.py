@@ -5,7 +5,11 @@ from django.contrib.auth.models import AbstractUser, Group, Permission
 class Users(AbstractUser):
     first_name = None
     last_name = None
+<<<<<<< HEAD
     user_name = models.CharField(max_length=10)
+=======
+    user_name = models.CharField(max_length=10, null=True)
+>>>>>>> 966c6d98fb79ce21f3bfb2deca4e14a8845b038e
     user_score = models.IntegerField(default=0)
 
     groups = models.ManyToManyField(
