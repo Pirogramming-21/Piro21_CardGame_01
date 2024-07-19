@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Game
-from users.models import User
+from apps.users.models import Users
 
 # Create your views here.
 def findWinner(game, user):

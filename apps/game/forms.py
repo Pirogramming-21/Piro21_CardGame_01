@@ -1,5 +1,5 @@
 from django import forms
-from .models import Game, User
+from .models import Game, Users
 from django.core.validators import MaxValueValidator, MinValueValidator
 import random as rd
 
