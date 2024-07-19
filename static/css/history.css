@@ -4,25 +4,16 @@
     background-image: none;
 }
 #history_list {
-    width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-#history_list_container {
-    width: 100%;
-    height: 100%;
-    padding: 50px;
+    max-height: 84vh;
+    overflow: hidden;
 }
 
 #history_list_title {
     background-color: var(--main-color);
-    margin-bottom: -40px;
-    margin-top: 55px;
-    margin-left: 90px;
-    margin-right: 90px;
+    margin-top: 30px;
     color: white;
     font-family: var(--main-font);
     font-size: 40px;
@@ -44,13 +35,24 @@
     margin-bottom: 20px;
 }
 
-.game_bg {
+#game_bg__container{
+    margin-top: 20px;
+    padding: 30px 50px;
+    padding-bottom: 30px;
     background-image: url(../images/game_background.jpg);
-    background-size: cover;
-    margin-right: 90px;
-    height: 587px;
-    margin-left: 90px;
-    margin-top: 75px;
+    background-size :  contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: auto;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.game_bg {
+    
+    margin-top: 60px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
