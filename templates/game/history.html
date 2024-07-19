@@ -16,15 +16,15 @@
             {% if game.bigorsmall == True %}
                 {% if game.attacker_card > game.revenger_card %}
                   {% if game.attacker == request.user %}
-                  <p>결과: 패배</p>
-                  {% else %}
                   <p>결과: 승리</p>
+                  {% else %}
+                  <p>결과: 패배</p>
                   {% endif %}
                 {% elif game.attacker_card < game.revenger_card %}
                   {% if game.attacker == request.user %}
-                  <p>결과: 승리</p>
-                  {% else %}
                   <p>결과: 패배</p>
+                  {% else %}
+                  <p>결과: 승리</p>
                   {% endif %}
                 {% elif game.attacker_card == game.revenger_card %}
                 <p>결과 : 무승부</p>
@@ -33,15 +33,15 @@
             {% else %}
                 {% if game.attacker_card > game.revenger_card %}
                   {% if game.attacker == request.user %}
-                  <p>결과: 승리</p>
-                  {% else %}
                   <p>결과: 패배</p>
+                  {% else %}
+                  <p>결과: 승리</p>
                   {% endif %}
                 {% elif game.attacker_card < game.revenger_card %}
                   {% if game.attacker == request.user %}
-                  <p>결과: 패배</p>
-                  {% else %}
                   <p>결과: 승리</p>
+                  {% else %}
+                  <p>결과: 패배</p>
                   {% endif %}
                 {% elif game.attacker_card == game.revenger_card %}
                 <p>결과 : 무승부</p>
