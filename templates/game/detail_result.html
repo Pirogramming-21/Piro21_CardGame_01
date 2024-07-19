@@ -1,28 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block head %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/game/detail_result.css' %}">
+</head>
+{% endblock %}
 {% block content %}
     <section>
-        <div class="detail_container">
+        <div id="detail__container">
             <div class="revenge_versus">
                 {{game.id}} - {{game.attacker}} VS {{game.revenger}}
             </div>
-            <hr>
             {% if game.bigorsmall == True %}
-            <p>숫자가 큰 사람이 이깁니다.</p>
+            <p id="rules">숫자가 큰 사람이 이깁니다.</pㅑ>
             {% else %}
-            <p>숫자가 작은 사람이 이깁니다.</p>
+            <p id="rules">숫자가 작은 사람이 이깁니다.</p>
             {% endif %}
             <div id= "selected_card">
                 <p>{{game.attacker}} : {{game.attacker_card}}</p>
                 <p>{{game.revenger}} : {{game.revenger_card}}</p>
             </div>
             {% if user_result == 0 %}
-            <p>패배</p>
+            <p id="lose">패배</p>
             {% elif user_result == 2 %}
-            <p>승리</p>
+            <p id="win">승리</p>
             {% else %}
-            <p>무승부</p>
+            <p id="draw">무승부</p>
             {% endif %}
             <hr>
             <p>점수 : {{user_score}}</p>
