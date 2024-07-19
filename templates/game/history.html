@@ -1,5 +1,10 @@
 {% extends 'base.html' %} 
 {% load static %}
+{% block head %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/history.css' %}">
+</head>
+{% endblock %}
 {%block content%}
 <section id="history_section">
   <div id="history_list">
