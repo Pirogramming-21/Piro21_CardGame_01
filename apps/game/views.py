@@ -28,6 +28,7 @@ def attack(request):
         form = AttackForm(request=request, instance=game)
     return render(request, "game/attack.html", {"form": form})
 
+
 def detail_attack(req, pk):
     game = Game.objects.get(pk=pk)
     ctx = {"game": game}
@@ -85,7 +86,7 @@ def revenge(request, pk):
     game = get_object_or_404(Game, pk=pk)
 
     if request.method == "POST":
-        form = RevengeForm(request.POST, instance = game)
+        form = RevengeForm(request.POST, instance=game)
         if form.is_valid():
             game = form.save()
             user_result, user_score = findWinner(game, request.user)
@@ -97,7 +98,7 @@ def revenge(request, pk):
             return render(request, "game/detail_result.html", ctx)
     else:
         if game.revenger_card != None:
-            return redirect('game:history')
+            return redirect("game:history")
         form = RevengeForm(request=request, instance=game)
     ctx = {"form": form, "pk": pk}
     return render(request, "game/revenge.html", ctx)
@@ -108,11 +109,12 @@ def detail_revenge(req, pk):
     ctx = {"game": game}
     return render(req, "game/detail_revenge.html", ctx)
 
+
 def detail_result(req, pk):
     game = Game.objects.get(id=pk)
-    user_winner, user_score = findWinner(game,req.user)
-    ctx = {'game':game, 'user_winner': user_winner, 'user_score': user_score}
-    return render(req, 'game/detail_result.html', ctx)
+    user_winner, user_score = findWinner(game, req.user)
+    ctx = {"game": game, "user_winner": user_winner, "user_score": user_score}
+    return render(req, "game/detail_result.html", ctx)
 
 
 from django.db.models import Q
@@ -139,6 +141,7 @@ def game_delete(request, pk):
     if request.method == "POST":
         Game.objects.get(id=pk).delete()
     return redirect("game:history")
+
 
 def progressing_result(request, pk):
     game = get_object_or_404(Game, pk=pk)

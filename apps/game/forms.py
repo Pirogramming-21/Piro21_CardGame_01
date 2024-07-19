@@ -45,12 +45,14 @@ class RevengeForm(forms.ModelForm):
         fields = ["revenger_card"]
 
     def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop('request', None)
+        self.request = kwargs.pop("request", None)
         super(RevengeForm, self).__init__(*args, **kwargs)
         self.shuffleChoices()
-    
+
     def shuffleChoices(self):
         if self.request:
             random_numbers = shuffle_card()
             choices = [(str(num), str(num)) for num in random_numbers]
-            self.fields['revenger_card'] = forms.ChoiceField(choices=choices, widget=forms.RadioSelect,  label="Revenger Card")
+            self.fields["revenger_card"] = forms.ChoiceField(
+                choices=choices, widget=forms.RadioSelect, label="Revenger Card"
+            )
