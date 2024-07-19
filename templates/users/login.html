@@ -1,19 +1,18 @@
+
 {% extends 'base.html' %} 
 {% block content %}
-
+<section>
 <div class="login-container">
     <h1>로그인</h1>
-    <form action='{% url "users:login" %}' method="POST">
-        {% csrf_token %}
-        <label for="username">아이디</label>
-        <input type="text" id="username" name="username" placeholder="" required>
-        <br>
-        <label for="password">비밀번호</label>
-        <input type="password" id="password" name="password" placeholder="" required>
-        <br>
-        <button type="submit">로그인</button>
+    <form action="{% url 'users:login' %}"
+    method="POST" 
+    enctype="multipart/form-data">
+        {% csrf_token %} {{form.as_p}}
+        <div class="submit_center">
+            <button type="submit" class="submit_btn">로그인</button>
+        </div>
     </form>
 </div>
+</section>
 {% endblock %}
-
 
