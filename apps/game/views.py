@@ -16,6 +16,8 @@ def attack(request):
     if request.method == "POST":
         game = Game()
         form = AttackForm(request.POST, instance=game)
+        game = Game()
+        form = AttackForm(request.POST, instance=game)
         if form.is_valid():
             game = form.save(commit=False)
             if game.revenger != None and game.revenger != request.user:
