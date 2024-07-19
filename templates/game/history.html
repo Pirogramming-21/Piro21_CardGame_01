@@ -1,68 +1,71 @@
 {% extends 'base.html' %} 
 {% load static %}
-<link rel="stylesheet" href="../../static/css/history.css">
 {%block content%}
-<div id="history_list">
-  <div id="history_list_container">
-    <div id="history_list_title">
-      History List
-    </div>
-    <p id="history_list_player">현재 플레이어 : {{request.user.username}}</p>
-    <ul id="history_list_sum">
-      {% for game in games %}
-      <li>
-        <p id="history_list_content">{{game.pk}} - {{game.attacker}} VS {{game.revenger}}</p>
-        {% if game.revenger_card != null and game.attacker_card != null %}
-            {% if game.bigorsmall == True %}
-                {% if game.attacker_card > game.revenger_card %}
-                  {% if game.attacker == request.user %}
-                  <p>결과: 승리</p>
-                  {% else %}
-                  <p>결과: 패배</p>
+<section id="history_section">
+  <div id="history_list">
+    <div id="history_list_container">
+      <div id="history_list_title">
+        History List
+      </div>
+      <div class="game_bg">
+        <p id="history_list_player">현재 플레이어 : {{request.user.username}}</p>
+      <ul id="history_list_sum">
+        {% for game in games %}
+        <li>
+          <p id="history_list_content">{{game.pk}} - {{game.attacker}} VS {{game.revenger}}</p>
+          {% if game.revenger_card != null and game.attacker_card != null %}
+              {% if game.bigorsmall == True %}
+                  {% if game.attacker_card > game.revenger_card %}
+                    {% if game.attacker == request.user %}
+                    <p>결과: 😍승리😍</p>
+                    {% else %}
+                    <p>결과: 😭패배😭</p>
+                    {% endif %}
+                  {% elif game.attacker_card < game.revenger_card %}
+                    {% if game.attacker == request.user %}
+                    <p>결과: 😭패배😭</p>
+                    {% else %}
+                    <p>결과: 😍승리😍</p>
+                    {% endif %}
+                  {% elif game.attacker_card == game.revenger_card %}
+                  <p>결과 : 😑무승부😑</p>
                   {% endif %}
-                {% elif game.attacker_card < game.revenger_card %}
-                  {% if game.attacker == request.user %}
-                  <p>결과: 패배</p>
-                  {% else %}
-                  <p>결과: 승리</p>
+                  <a class="history_list_detail" href="{% url 'game:detail_result' game.pk %}"> 게임정보 </a>
+              {% else %}
+                  {% if game.attacker_card > game.revenger_card %}
+                    {% if game.attacker == request.user %}
+                    <p>결과: 😭패배😭</p>
+                    {% else %}
+                    <p>결과: 😍승리😍</p>
+                    {% endif %}
+                  {% elif game.attacker_card < game.revenger_card %}
+                    {% if game.attacker == request.user %}
+                    <p>결과: 😍승리😍</p>
+                    {% else %}
+                    <p>결과: 😭패배😭</p>
+                    {% endif %}
+                  {% elif game.attacker_card == game.revenger_card %}
+                  <p>결과 : 😑무승부😑</p>
                   {% endif %}
-                {% elif game.attacker_card == game.revenger_card %}
-                <p>결과 : 무승부</p>
-                {% endif %}
-                <a class="history_list_detail" href="{% url 'game:detail_result' game.pk %}"> 게임정보 </a>
-            {% else %}
-                {% if game.attacker_card > game.revenger_card %}
-                  {% if game.attacker == request.user %}
-                  <p>결과: 패배</p>
-                  {% else %}
-                  <p>결과: 승리</p>
-                  {% endif %}
-                {% elif game.attacker_card < game.revenger_card %}
-                  {% if game.attacker == request.user %}
-                  <p>결과: 승리</p>
-                  {% else %}
-                  <p>결과: 패배</p>
-                  {% endif %}
-                {% elif game.attacker_card == game.revenger_card %}
-                <p>결과 : 무승부</p>
-                {% endif %}
-                <a class="history_list_detail" href="{% url 'game:detail_result' game.pk %}"> 게임정보 </a>
-            {% endif %}
-        {% else %}
-            {% if game.attacker.username == request.user.username %}
-                <form action="{% url 'game:game_delete' game.pk %}" method="post">
-                {% csrf_token %}
-                <p id="history_list_result">진행 중...<button class="delete_btn">게임취소</button></p>
-                </form>
-                <a class="history_list_detail" href="{% url 'game:progressing_result' game.pk %}">게임정보</a>
-            {% else %}
-                <a class="history_list_detail" href="{% url 'game:revenge' game.pk %}">revenge</a>
-                <a class="history_list_detail" href="{% url 'game:detail_revenge' game.pk %}"> 게임정보 </a>
+                  <a class="history_list_detail" href="{% url 'game:detail_result' game.pk %}"> 게임정보 </a>
+              {% endif %}
+          {% else %}
+              {% if game.attacker.username == request.user.username %}
+                  <form action="{% url 'game:game_delete' game.pk %}" method="post">
+                  {% csrf_token %}
+                  <p id="history_list_result">👾 진행 중... 👾 <button class="delete_btn">게임취소</button></p>
+                  </form>
+                  <a class="history_list_detail" href="{% url 'game:progressing_result' game.pk %}">게임정보</a>
+              {% else %}
+                  <a class="history_list_detail" href="{% url 'game:revenge' game.pk %}">revenge</a>
+                  <a class="history_list_detail" href="{% url 'game:detail_revenge' game.pk %}"> 게임정보 </a>
+          {% endif %}
         {% endif %}
-      {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
+        </li>
+        {% endfor %}
+      </ul>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 {%endblock%}
