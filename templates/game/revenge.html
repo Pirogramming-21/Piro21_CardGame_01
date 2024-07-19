@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block head %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/game/revenge.css' %}">
+</head>
+{% endblock %}
 
 {% block content %}
     <section class="revenge_container">
-        <h2>반격할 카드:</h2>
-        <form action="{% url 'game:revenge' pk %}" method="POST" class="revenge_form">
-            {% csrf_token %}{{form.as_p}}
-            <hr>
-            <button type="submit" class="submit_btn">CounterAttack</button>
-        </form>
+        <div class="revenge__form">
+            <div id="revenge__title">REVENGE</div>
+            <div id="card__title">내가 고른 카드</div>
+            <form action="{% url 'game:revenge' pk %}" method="POST" class="revenge_form">
+                {% csrf_token %}{{form.as_p}}
+                <hr/>
+                    <hr/>
+                    <button type="submit" class="submit_btn">REVENGE</button>
+            </form>
+        </div>
     </section>
 {% endblock %}

@@ -1,4 +1,11 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/game/progressing_result.css' %}">
+</head>
+{% endblock %}
+{% block content %}
 <section>
   <div class="detail_container">
     <div class="detail_modal">

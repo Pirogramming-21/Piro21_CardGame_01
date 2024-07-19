@@ -1,46 +1,46 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-    <link rel="stylesheet" href="{%static 'game/css/reset.css' %}">
     <link rel="stylesheet" href="{%static 'css/ranking.css' %}">
 {% endblock %}
 {% block content %}
 <section class="submit_container">
     <div class="ranking_container">
-        <h3 id="ranking-title">Piro 명예의 전당</h3>
-        <hr>
-        <div id="ranking-123">
-            {% with sorted_users=user_list|dictsortreversed:"user_score" %}
-                {% for user in sorted_users|slice:":3" %}
-                    {% if forloop.counter == 2 %}
-                        <div>
-                            <div class="ranking-text">
-                                <p>{{ user.username }}</p>
-                                <p>{{ user.user_score }}</p>
+        <div id="ranking_content">
+            <h3 id="ranking-title">👑🎉 Piro 명예의 전당 🎉👑</h3>
+            <div id="ranking-123">
+                {% with sorted_users=user_list|dictsortreversed:"user_score" %}
+                    {% for user in sorted_users|slice:":3" %}
+                        {% if forloop.counter == 2 %}
+                            <div>
+                                <div class="ranking-text">
+                                    <p>{{ user.username }}</p>
+                                    <p>{{ user.user_score }}</p>
+                                </div>
+                                <div id="ranking-2">2</div>
                             </div>
-                            <div id="ranking-2">2</div>
-                        </div>
-                    {% elif forloop.counter == 1 %}
-                        <div>
-                            <div class="ranking-text">
-                                <p>{{ user.username }}</p>
-                                <p>{{ user.user_score }}</p>
+                        {% elif forloop.counter == 1 %}
+                            <div>
+                                <div class="ranking-text">
+                                    <p>{{ user.username }}</p>
+                                    <p>{{ user.user_score }}</p>
+                                </div>
+                                <div id="ranking-1">1</div>
                             </div>
-                            <div id="ranking-1">1</div>
-                        </div>
-                    {% elif forloop.counter == 3 %}
-                        <div>
-                            <div class="ranking-text">
-                                <p>{{ user.username }}</p>
-                                <p>{{ user.user_score }}</p>
+                        {% elif forloop.counter == 3 %}
+                            <div>
+                                <div class="ranking-text">
+                                    <p>{{ user.username }}</p>
+                                    <p>{{ user.user_score }}</p>
+                                </div>
+                                <div id="ranking-3">3</div>
                             </div>
-                            <div id="ranking-3">3</div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            {% endwith %}
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %}
+            </div>
+            <div class="submit_center"><a href="{% url 'game:history' %}" class="to_list">전적 목록</a></div>
         </div>
-        <div class="submit_center"><a href="{% url 'game:history' %}" class="to_list">전적 목록</a></div>
     </div>
 </section>
 {% endblock %}
