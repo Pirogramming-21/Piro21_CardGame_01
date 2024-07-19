@@ -20,8 +20,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include('apps.game.urls')),
-    path("users/", include('apps.users.urls'))
+    path("game/", include('apps.game.urls')),
+    path("", include('apps.users.urls'))
 ]
 
 from django.conf import settings
