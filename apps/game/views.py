@@ -22,7 +22,7 @@ def attack(request):
                 game.attacker = request.user
                 game.bigorsmall = rd.randint(0, 1)
                 game.save()
-                return redirect("game:history")
+                return redirect("game:detail_attack", pk=game.id)
     else:
         game = Game()
         form = AttackForm(request=request, instance=game)
