@@ -1,0 +1,11 @@
+{% block content %}
+<nav>
+    <div id="nav_title">
+        <a href='/'>Pirogrammer Card Game</a>
+    </div>
+    <div id="nav_menu">
+        <a href='{% url "users:login" %}'>로그인</a>
+        <a href='{% url "users:signup" %}'>회원가입</a>
+    </div>
+</nav>
+{% endblock %}
