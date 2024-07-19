@@ -1,0 +1,39 @@
+@import url(../css/style.css);
+
+.submit_container {
+    height: 84vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.submit_container h2 {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.signup p {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.signup label {
+    padding: 1px 5px;
+    margin: 10px;
+}
+
+.submit_btn {
+    margin-right: 130px;
+    margin-top: 10px;
+    padding: 5px 15px;
+    background-color: var(--gray-color);
+    color: white;
+}

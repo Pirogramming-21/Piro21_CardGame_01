@@ -4,25 +4,27 @@
 
     <section>
         <div class="main_container">
-            <div class="main_title">
-                <p>Piro Game</p>
-            </div>
-            {% if user.is_authenticated %}
-            <span class="main_username">{{request.user.username}}님이 로그인 중</span>
-            {% endif %}
-            <div class="btns">
+            <div class="shadow_box">
+                <div class="main_title">
+                    <p>Piro Game</p>
+                </div>
                 {% if user.is_authenticated %}
-                <button class="btn_game"><a href="{% url 'game:attack' %}">start</a></button>
-                <button class="btn_history"><a href="{% url 'game:history'%}">list</a></button>
-
-                {%comment%}
-                <button class="btn_history"><a href="{% url 'game:history'%}">list</a></button>
-                {%endcomment%}
-
-                {% else %}
-                <button class="btn_game"><a href="{% url 'users:login' %}">start</a></button>
-                <!--<button class="btn_signup"><a href="{% url 'users:signup' %}">signup</a></button>-->
+                <span class="main_username">{{request.user.username}}님이 로그인 중</span>
                 {% endif %}
+                <div class="btns">
+                    {% if user.is_authenticated %}
+                    <button class="btn_game"><a href="{% url 'game:attack' %}">start</a></button>
+                    <button class="btn_history"><a href="{% url 'game:history'%}">list</a></button>
+    
+                    {%comment%}
+                    <button class="btn_history"><a href="{% url 'game:history'%}">list</a></button>
+                    {%endcomment%}
+    
+                    {% else %}
+                    <button class="btn_game"><a href="{% url 'users:login' %}">start</a></button>
+                    <!--<button class="btn_signup"><a href="{% url 'users:signup' %}">signup</a></button>-->
+                    {% endif %}
+                </div>
             </div>
         </div>
     </section>
