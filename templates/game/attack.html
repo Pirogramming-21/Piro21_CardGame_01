@@ -6,10 +6,10 @@
 {% block content %}
     <section class="attack_container">
         <h2>공격~</h2>
-        <form action="{% url 'game:attack' pk %}" method="POST" class="attack_form">
+        <form action="{% url 'game:attack'}" method="POST" class="attack_form">
             {% csrf_token %}{{form.as_p}}
             <hr>
-            <button type="submit" class="submit_btn">CounterAttack</button>
+            <button type="submit" class="submit_btn">Attack</button>
         </form>
     </section>
 {% endblock %}

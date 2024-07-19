@@ -12,24 +12,27 @@ def shuffle_card():
     return rd_num
 
 
-def attack(req, pk):
-    game = get_object_or_404(Game, pk=pk)
-
-    if req.method == "POST":
-        form = AttackForm(req.POST, user=req.user)
+def attack(request):
+    if request.method == "POST":
+        form = AttackForm(request.POST, user=request.user)
         if form.is_valid():
             attack = form.save(commit=False)
             attack.attacker_card = form.cleaned_data["card"]
+            attack.revenger = form.cleaned_data["revenger"]
             attack.save()
-            ctx = {"form": form, "attack": attack}
-            return render(req, "game/revenge.html", ctx)
+
+            # 공격 후 적절한 페이지로 리다이렉트
+            return redirect("users:main")
         else:
-            return render(req, "game/detail_result.html", {"form": form, "game": game})
+            # 폼이 유효하지 않을 때, 폼과 함께 오류 페이지를 렌더링합니다.
+            ctx = {"form": form}
+            return render(request, "game/attack.html", ctx)
 
     else:
-        form = AttackForm(user=req.user)
-        ctx = {"form": form, "game": game}
-        return render(req, "game/detail_result.html", ctx)
+        # GET 요청 시, 빈 폼을 생성합니다.
+        form = AttackForm(user=request.user)
+        ctx = {"form": form}
+        return render(request, "game/attack.html", ctx)
 
 
 def detail_attack(req, pk):

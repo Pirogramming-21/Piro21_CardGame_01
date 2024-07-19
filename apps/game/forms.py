@@ -35,11 +35,11 @@ class AttackForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields["bigorsmall"].widget = forms.HiddenInput()
         self.fields["attacker_card"].widget = forms.HiddenInput()
-        self.fields["revenger"] = forms.ModelChoiceField(
-            queryset=Users.objects.exclude(pk=self.user.pk),
-            widget=forms.RadioSelect,
-            empty_label=None,
-        )
+        self.fields["revenger"].widget = forms.RadioSelect()
+        self.fields["revenger"].queryset = Users.objects.exclude(
+            pk=self.user.pk
+        )  # `queryset`을 수정합니다.
+        # self.fields["revenger"].empty_label = None
 
     # AttackForm에서 필요한 것: 공격자의 카드, 공격 대상, 게임 종류?
 
