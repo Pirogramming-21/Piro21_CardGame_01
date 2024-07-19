@@ -88,8 +88,7 @@ def revenge(request, pk):
         form = RevengeForm(request.POST, instance = game)
         if form.is_valid():
             game = form.save()
-
-            user_result, user_score = findWinner(revenge, request.user)
+            user_result, user_score = findWinner(game, request.user)
             ctx = {
                 "game": revenge,
                 "user_result": user_result,
@@ -105,7 +104,7 @@ def revenge(request, pk):
 
 
 def detail_revenge(req, pk):
-    game = get_object_or_404(Game, id=pk)
+    game = get_object_or_404(Game, pk=pk)
     ctx = {"game": game}
     return render(req, "game/detail_revenge.html", ctx)
 
@@ -114,8 +113,6 @@ def detail_result(req, pk):
     user_winner, user_score = findWinner(game,req.user)
     ctx = {'game':game, 'user_winner': user_winner, 'user_score': user_score}
     return render(req, 'game/detail_result.html', ctx)
-
-
 
 
 from django.db.models import Q

@@ -13,7 +13,7 @@
       <li>
         <p id="history_list_content">{{game.pk}} - {{game.attacker}} VS {{game.revenger}}</p>
         {% if game.revenger_card != null and game.attacker_card != null %}
-            {% if game.rule == 0 %}
+            {% if game.bigorsmall == True %}
                 {% if game.attacker_card > game.revenger_card %}
                   {% if game.attacker == request.user %}
                   <p>결과: 패배</p>
@@ -29,7 +29,7 @@
                 {% elif game.attacker_card == game.revenger_card %}
                 <p>결과 : 무승부</p>
                 {% endif %}
-                <a class="history_list_detail" href="{% url '임시 주소' game.pk %}"> 게임정보 </a>
+                <a class="history_list_detail" href="{% url 'game:detail_result' game.pk %}"> 게임정보 </a>
             {% else %}
                 {% if game.attacker_card > game.revenger_card %}
                   {% if game.attacker == request.user %}
@@ -58,7 +58,8 @@
             {% else %}
                 <a class="history_list_detail" href="{% url 'game:revenge' game.pk %}">revenge</a>
                 <a class="history_list_detail" href="{% url 'game:detail_revenge' game.pk %}"> 게임정보 </a>
-        {% endif%}
+        {% endif %}
+      {% endif %}
       </li>
       {% endfor %}
     </ul>

@@ -1,11 +1,4 @@
 from django.db import models
-<<<<<<< HEAD
-
-# Create your models here.
-
-from django.db import models
-=======
->>>>>>> 67f47adf6b78ecfcfae28bc35636543cd3be978b
 from django.contrib.auth.models import AbstractUser, Group, Permission
 
 
