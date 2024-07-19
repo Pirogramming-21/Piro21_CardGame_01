@@ -1,7 +1,7 @@
 from django import forms
-from .models import Game
+from .models import Game, Users
+from django.core.validators import MaxValueValidator, MinValueValidator
 import random as rd
-from apps.users.models import Users
 
 
 def shuffle_card():

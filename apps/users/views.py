@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
-from .forms import SignupForm
+from apps.users.forms import SignupForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import auth
+from .models import Users
+from django.contrib.auth import login as auth_login
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -12,22 +16,20 @@ def main(req):
 
 def signup(req):
     if req.method == "POST":
-        form = SignupForm(req.POST)
+        form = UserCreationForm(req.POST)
         if form.is_valid():
+            username = form.cleaned_data.get("username")
+            if Users.objects.filter(username=username).exists():
+                messages.error(req, "Username already exists")
+                return render(req, "users/signup.html", {"form": form})
             user = form.save()
-            auth.login(req, user)
+            auth_login(req, user)
             return redirect("users:main")
         else:
-            ctx = {
-                "form": form,
-            }
-            return render(req, "users/signup.html")
+            return render(req, "users/signup.html", {"form": form})
     else:
-        form = SignupForm()
-        ctx = {
-            "form": form,
-        }
-        return render(req, template_name="users/signup.html", context=ctx)
+        form = UserCreationForm()
+        return render(req, "users/signup.html", {"form": form})
 
 
 def login(req):
