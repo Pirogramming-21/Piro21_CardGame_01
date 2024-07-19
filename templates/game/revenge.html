@@ -4,7 +4,7 @@
 {% block content %}
     <section class="revenge_container">
         <h2>반격할 카드:</h2>
-        <form action="{% url 'game:revenger' pk %}" method="POST" class="revenge_form">
+        <form action="{% url 'game:revenge' pk %}" method="POST" class="revenge_form">
             {% csrf_token %}{{form.as_p}}
             <hr>
             <button type="submit" class="submit_btn">CounterAttack</button>

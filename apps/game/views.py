@@ -14,25 +14,19 @@ def shuffle_card():
 
 def attack(request):
     if request.method == "POST":
-        form = AttackForm(request.POST, user=request.user)
+        game = Game()
+        form = AttackForm(request.POST, instance=game)
         if form.is_valid():
-            attack = form.save(commit=False)
-            attack.attacker_card = form.cleaned_data["card"]
-            attack.revenger = form.cleaned_data["revenger"]
-            attack.save()
-
-            # 공격 후 적절한 페이지로 리다이렉트
-            return redirect("users:main")
-        else:
-            # 폼이 유효하지 않을 때, 폼과 함께 오류 페이지를 렌더링합니다.
-            ctx = {"form": form}
-            return render(request, "game/attack.html", ctx)
-
+            game = form.save(commit=False)
+            if game.revenger != None and game.revenger != request.user:
+                game.attacker = request.user
+                game.bigorsmall = rd.randint(0, 1)
+                game.save()
+                return redirect("game:detail_attack", pk=game.pk)
     else:
-        # GET 요청 시, 빈 폼을 생성합니다.
-        form = AttackForm(user=request.user)
-        ctx = {"form": form}
-        return render(request, "game/attack.html", ctx)
+        game = Game()
+        form = AttackForm(request=request, instance=game)
+    return render(request, "game/attack.html", {"form": form})
 
 
 def detail_attack(req, pk):
@@ -92,13 +86,10 @@ def revenge(request, pk):
     game = get_object_or_404(Game, pk=pk)
 
     if request.method == "POST":
-        form = RevengeForm(request.POST, user=request.user)
+        form = RevengeForm(request.POST, instance=game)
         if form.is_valid():
-            revenge = form.save(commit=False)
-            revenge.revenger = request.user
-            revenge.save()
-
-            user_result, user_score = findWinner(revenge, request)
+            game = form.save()
+            user_result, user_score = findWinner(game, request.user)
             ctx = {
                 "game": revenge,
                 "user_result": user_result,
@@ -106,18 +97,24 @@ def revenge(request, pk):
             }
             return render(request, "game/detail_result.html", ctx)
     else:
-        form = RevengeForm(user=request.user)
-        ctx = {"form": form, "pk": pk}
-        return render(request, "game/revenge.html", ctx)
-
+        if game.revenger_card != None:
+            return redirect("game:history")
+        form = RevengeForm(request=request, instance=game)
     ctx = {"form": form, "pk": pk}
     return render(request, "game/revenge.html", ctx)
 
 
 def detail_revenge(req, pk):
-    game = Game.objects.get(id=pk)
+    game = get_object_or_404(Game, pk=pk)
     ctx = {"game": game}
     return render(req, "game/detail_revenge.html", ctx)
+
+
+def detail_result(req, pk):
+    game = Game.objects.get(id=pk)
+    user_winner, user_score = findWinner(game, req.user)
+    ctx = {"game": game, "user_winner": user_winner, "user_score": user_score}
+    return render(req, "game/detail_result.html", ctx)
 
 
 from django.db.models import Q
@@ -143,7 +140,7 @@ def ranking(request):
 def game_delete(request, pk):
     if request.method == "POST":
         Game.objects.get(id=pk).delete()
-    return redirect("game:game_list")
+    return redirect("game:history")
 
 
 def progressing_result(request, pk):

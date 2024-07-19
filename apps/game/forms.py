@@ -15,46 +15,48 @@ class GameForm(forms.ModelForm):
 
 
 class AttackForm(forms.ModelForm):
-    card = forms.ChoiceField(
-        choices=[(card, card) for card in shuffle_card()],
-        widget=forms.RadioSelect,
-        label="Attack Card",
-    )
 
     class Meta:
         model = Game
         fields = [
-            "bigorsmall",
             "attacker_card",
             "revenger",
         ]
 
     def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop("user", None)  # kwargs dict에서 key가 user인 값 꺼내기
-        super().__init__(*args, **kwargs)
-        self.fields["bigorsmall"].widget = forms.HiddenInput()
-        self.fields["attacker_card"].widget = forms.HiddenInput()
-        self.fields["revenger"].widget = forms.RadioSelect()
-        self.fields["revenger"].queryset = Users.objects.exclude(
-            pk=self.user.pk
-        )  # `queryset`을 수정합니다.
-        # self.fields["revenger"].empty_label = None
+        self.request = kwargs.pop("request", None)
+        super(AttackForm, self).__init__(*args, **kwargs)
+        if self.request:
+            self.fields["revenger"].queryset = Users.objects.exclude(
+                pk=self.request.user.pk
+            )  # 본인을 제외한 사용자 목록 설정
+            self.shuffleChoices()
 
-    # AttackForm에서 필요한 것: 공격자의 카드, 공격 대상, 게임 종류?
+    def shuffleChoices(self):
+        if self.request:
+            random_numbers = shuffle_card()
+            choices = [(str(num), str(num)) for num in random_numbers]
+            self.fields["attacker_card"] = forms.ChoiceField(
+                choices=choices, widget=forms.RadioSelect, label="Attacker Card"
+            )
+
+    revenger = forms.ModelChoiceField(queryset=Users.objects.all(), label="Revenger")
 
 
 class RevengeForm(forms.ModelForm):
-    card = forms.ChoiceField(
-        choices=[(card, card) for card in shuffle_card()],
-        widget=forms.RadioSelect,
-        label="Revenge Card",
-    )
-
     class Meta:
         model = Game
         fields = ["revenger_card"]
 
     def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop("user", None)
-        super().__init__(*args, **kwargs)
-        self.fields["revenger_card"].widget = forms.HiddenInput()
+        self.request = kwargs.pop("request", None)
+        super(RevengeForm, self).__init__(*args, **kwargs)
+        self.shuffleChoices()
+
+    def shuffleChoices(self):
+        if self.request:
+            random_numbers = shuffle_card()
+            choices = [(str(num), str(num)) for num in random_numbers]
+            self.fields["revenger_card"] = forms.ChoiceField(
+                choices=choices, widget=forms.RadioSelect, label="Revenger Card"
+            )

@@ -2,13 +2,12 @@
 {% load static %}
 <link rel="stylesheet" href="{%static 'game/css/reset.css'%}">
 <link rel="stylesheet" href="{%static 'game/css/attack.css'%}">
-<link rel="stylesheet" href="./../../static/game/attack.css">
 {% block content %}
     <section class="attack__container">
         <div class="attack__form">
             <div id="attack__title">ATTACK</div>
             <div id="card__title">내가 고른 카드</div>
-            <form action="{% url 'game:attack'}" method="POST" class="attack_form">
+            <form action="{% url 'game:attack' %}" method="POST" class="attack_form">
                 {% csrf_token %}{{form.as_p}}
                 <hr>
                 <button type="submit" class="submit_btn">Attack</button>

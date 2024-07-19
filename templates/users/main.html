@@ -14,18 +14,19 @@
                 <div class="btns">
                     {% if user.is_authenticated %}
                     <button class="btn_game"><a href="{% url 'game:attack' %}">start</a></button>
-                    <button class="btn_game"><a href="{% url 'users:logout'%}">logout</a></button>
+                    <button class="btn_history"><a href="{% url 'game:history'%}">list</a></button>
     
                     {%comment%}
                     <button class="btn_history"><a href="{% url 'game:history'%}">list</a></button>
                     {%endcomment%}
     
                     {% else %}
-                    <button class="btn_game"><a href="{% url 'users:login' %}">login</a></button>
-                    <button class="btn_game"><a href="{% url 'users:signup' %}">signup</a></button>
+                    <button class="btn_game"><a href="{% url 'users:login' %}">start</a></button>
+                    <!--<button class="btn_signup"><a href="{% url 'users:signup' %}">signup</a></button>-->
                     {% endif %}
                 </div>
             </div>
         </div>
     </section>
+
 {% endblock %}

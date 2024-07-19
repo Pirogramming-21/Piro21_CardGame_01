@@ -14,7 +14,7 @@
           </form>
         </div>
         <div class='delete_container'>
-          <form action="{% url 'game:game_list'%}">
+          <form action="{% url 'game:history'%}">
             {% csrf_token %}
             <button class="submit_btn">전적목록</button>
             </form>
