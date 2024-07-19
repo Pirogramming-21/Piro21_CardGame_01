@@ -17,8 +17,6 @@ class Game(models.Model):
     attacker = models.ForeignKey(
         Users,
         on_delete=models.CASCADE,
-        null=True,
-        blank=True,
         related_name="attack_game",
     )
     attacker_card = models.IntegerField(
@@ -28,12 +26,9 @@ class Game(models.Model):
     revenger = models.ForeignKey(
         Users,
         on_delete=models.CASCADE,
-        null=True,
-        blank=True,
         related_name="revenge_game",
     )
     revenger_card = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(10)], null=True, blank=True
     )
-
     created_date = models.DateTimeField(default=timezone.now)
