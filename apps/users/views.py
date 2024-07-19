@@ -23,7 +23,7 @@ def signup(req):
                 messages.error(req, "Username already exists")
                 return render(req, "users/signup.html", {"form": form})
             user = form.save()
-            auth_login(req, user)
+            # auth_login(req, user)
             return redirect("users:main")
         else:
             return render(req, "users/signup.html", {"form": form})
