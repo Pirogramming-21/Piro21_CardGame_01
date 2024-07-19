@@ -10,10 +10,10 @@
                 {{game.id}} - {{game.attacker}} VS {{game.revenger}}
             </div>
             <div class="do_next">
-                <form action = "{% url 'game:attack' game.pk %}" method="get">
+                <form action = "{% url 'game:attack' %}" method="get">
                     {% csrf_token %}
                     <button class="submit_btn">대응하기</button>
-                    <a href="{% url 'game:list' %}" class="btn btn-primary">전적목록</a>
+                    <a href="{% url 'game:history' %}" class="btn btn-primary">전적목록</a>
                 </form>
             </div>
         </div>

@@ -18,4 +18,5 @@ urlpatterns = [
     ),  # 진행 중 용
     path("delete/<int:pk>", game_delete, name="game_delete"),  # 게임 취소용
     path("detail_revenge/<int:pk>", detail_revenge, name="detail_revenge"),
+    path("detail_result/<int:pk>", detail_result, name="detail_result"),
 ]

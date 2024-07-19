@@ -46,7 +46,7 @@
                 {% elif game.attacker_card == game.revenger_card %}
                 <p>결과 : 무승부</p>
                 {% endif %}
-                <a class="history_list_detail" href="{% url '임시 주소' game.pk %}"> 게임정보 </a>
+                <a class="history_list_detail" href="{% url 'game:detail_result' game.pk %}"> 게임정보 </a>
             {% endif %}
         {% else %}
             {% if game.attacker.username == request.user.username %}
