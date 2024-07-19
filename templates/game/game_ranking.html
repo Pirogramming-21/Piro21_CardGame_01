@@ -7,7 +7,7 @@
         <h3 id="ranking-title">Piro 명예의 전당</h3>
         <div id="ranking-123">
             {% with sorted_users=user_list|dictsortreversed:"user_score" %}
-                {% for user in sorted_users|slice:":3" %}
+                {% comment %} {% for user in sorted_users|slice:":3" %} {% endcomment %}
                     {% if forloop.counter == 2 %}
                         {% with user2=user %}
                         <div>
