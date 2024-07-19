@@ -7,7 +7,7 @@ from django import forms
 
 class SignupForm(UserCreationForm):
     username = forms.CharField(
-        label='아이디',
+        label='아이디  ',
         widget=forms.TextInput(
             attrs={
                 'class' : 'signup-input'
@@ -16,7 +16,7 @@ class SignupForm(UserCreationForm):
     )
 
     password1 = forms.CharField(
-        label='비밀번호',
+        label='비밀번호  ',
         widget=forms.PasswordInput(
             attrs={
                 'class' : 'signup-input'
@@ -24,7 +24,7 @@ class SignupForm(UserCreationForm):
         )
     )
     password2 = forms.CharField(
-        label='비밀번호 확인',
+        label='비밀번호 확인  ',
         widget=forms.PasswordInput(
             attrs={
                 'class' : 'signup-input'
