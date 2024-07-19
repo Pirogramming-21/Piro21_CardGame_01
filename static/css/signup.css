@@ -1,5 +1,6 @@
-@import url(../css/style.css);
-
+h2 {    
+    font-family: var(--main-font);
+}
 .submit_container {
     height: 84vh;
     display: flex;
@@ -9,9 +10,24 @@
 }
 
 .submit_container h2 {
-    color: white;
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+}
+
+.shadow_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 200px;
+    background-color: transparent;
+    background-image: url('../images/game_background.jpg');
+    background-size :  contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    gap: 10px;
+    border: none;
+    border-radius: 0;
 }
 
 .signup {
@@ -22,7 +38,8 @@
 
 .signup p {
     margin-bottom: 20px;
-    color: white;
+    font-family: var(--main-font);
+
 }
 
 .signup label {
@@ -36,4 +53,7 @@
     padding: 5px 15px;
     background-color: var(--gray-color);
     color: white;
+    border: none;
+    font-family: var(--main-font);
+
 }

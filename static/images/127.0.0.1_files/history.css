@@ -1,0 +1,29 @@
+#history_list {
+    height: 80vh;
+    background-image: url(../images/background.jpg);
+    /*background-size: cover;*/
+    display: flex;
+    justify-content: center;
+}
+
+#history_list_container {
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: aliceblue;
+}
+
+#history_list_container ul {
+    width: 100%;
+    margin-top: 20px;
+    list-style: none;
+}
+
+#history_list_container li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+}
