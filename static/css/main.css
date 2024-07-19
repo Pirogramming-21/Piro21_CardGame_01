@@ -64,6 +64,8 @@ section {
     height: 84vh;
     /*배경사진추가*/
     background-color: var(--main-color);
+    background-image: url(../images/blue_screen.png);
+
     background-size: cover;
 }
 
