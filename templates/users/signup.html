@@ -1,4 +1,10 @@
 {% extends 'base.html' %} 
+{% load static %}
+{% block head %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+{% endblock %}
 {% block content %}
 <section class="submit_container">
     <div class="shadow_box">
