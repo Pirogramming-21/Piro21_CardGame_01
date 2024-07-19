@@ -26,7 +26,11 @@ class AttackForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request", None)
         super(AttackForm, self).__init__(*args, **kwargs)
-        self.shuffleChoices()
+        if self.request:
+            self.fields["revenger"].queryset = Users.objects.exclude(
+                pk=self.request.user.pk
+            )  # 본인을 제외한 사용자 목록 설정
+            self.shuffleChoices()
 
     def shuffleChoices(self):
         if self.request:
