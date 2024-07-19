@@ -1,7 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/macos,venv
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,venv
 venv
-
+db.sqlite3
+__pycache__
 ### macOS ###
 # General
 .DS_Store

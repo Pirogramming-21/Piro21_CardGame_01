@@ -16,13 +16,15 @@ def attack(request):
     if request.method == "POST":
         game = Game()
         form = AttackForm(request.POST, instance=game)
+        game = Game()
+        form = AttackForm(request.POST, instance=game)
         if form.is_valid():
             game = form.save(commit=False)
             if game.revenger != None and game.revenger != request.user:
                 game.attacker = request.user
                 game.bigorsmall = rd.randint(0, 1)
                 game.save()
-                return redirect("game:history")
+                return redirect("game:detail_attack", pk=game.id)
     else:
         game = Game()
         form = AttackForm(request=request, instance=game)
