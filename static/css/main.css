@@ -49,7 +49,7 @@ footer > span{
 section{
     height: 84vh;
     /*배경사진추가*/
-    background-image: url(../image/background.jpg);
+    background-image: url(../img/background.jpg);
 
 }
 
