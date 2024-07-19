@@ -2,11 +2,7 @@ from django.shortcuts import render, redirect
 from apps.users.forms import SignupForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import auth
-from .models import Users
-from django.contrib.auth import login as auth_login
-from django.contrib.auth import logout as auth_logout
-from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
+
 
 # Create your views here.
 
@@ -17,17 +13,19 @@ def main(req):
 
 def signup(req):
     if req.method == "POST":
-        form = UserCreationForm(req.POST)
+        form = SignupForm(req.POST)
         if form.is_valid():
             user = form.save()
-            auth_login(req, user)  # 회원가입 후 자동 로그인
-            messages.success(req, "Signup successful! Please log in.")  # 성공 메시지
-            auth_logout(req)  # 자동으로 로그아웃 처리
+            auth.login(req,user)
+            auth.logout(req,user)
             return redirect('users:login')  # 로그인 페이지로 리디렉션
         else:
-            return render(req, 'users/signup.html', {'form': form})
+            ctx = {
+                'form' : form,
+            }
+            return render(req, 'users/signup.html', context = ctx)
     else:
-        form = UserCreationForm()
+        form = SignupForm()
         return render(req, 'users/signup.html', {'form': form})
 
 def login(req):
