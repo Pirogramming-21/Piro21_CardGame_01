@@ -7,10 +7,10 @@ from django import forms
 class SignupForm(UserCreationForm):
     class Meta:
         model = Users
-        fields = ["user_name", "password1", "password2"]
+        fields = ["username", "password1", "password2"]
 
-    def clean_user_name(self):
-        user_name = self.cleaned_data.get("user_name")
-        if Users.objects.filter(user_name=user_name).exists():
-            raise forms.ValidationError("This username is already taken.")
-        return user_name
+    def clean_username(self):
+        username = self.cleaned_data.get("username")
+        if Users.objects.filter(user_name=username).exists():
+            raise ValidationError("This username is already taken.")
+        return username
