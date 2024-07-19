@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://127.0.0.1:8000/game/history/ -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./127.0.0.1_files/main.css">
+    
+
+  <link rel="stylesheet" href="./127.0.0.1_files/history.css">
+</head>
+
+
+<body>
+    
+<nav>
+    <div id="nav_title">
+        <a href="http://127.0.0.1:8000/">Pirogrammer Card Game</a>
+    </div>
+    <!--로그인한 상태일 때 출력-->
+    <div id="nav_menu">
+        <a href="http://127.0.0.1:8000/game/attack/">게임하기</a>
+        <a href="http://127.0.0.1:8000/game/ranking/">랭킹보기</a>
+        <a href="http://127.0.0.1:8000/logout/">로그아웃</a>
+    </div>
+    
+</nav>
+
+    
+<div id="history_list">
+  <div id="history_list_container">
+    <div id="history_list_title">
+      History List
+    </div>
+    <p id="history_list_player">현재 플레이어 : kw</p>
+    <ul id="history_list_sum">
+      
+      <li>
+        <p id="history_list_content">6 - kw VS kw_test</p>
+        
+            
+                <form action="http://127.0.0.1:8000/game/delete/6" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="iRVCUCKTpiekiytMviTOIRi5yRdXFVxQQIREH6SpjkIa52tJpuHwwy3AJk3FzbSL">
+                <p id="history_list_result">진행 중...<button class="delete_btn">게임취소</button></p>
+                </form>
+                <a class="history_list_detail" href="http://127.0.0.1:8000/game/progressing_result/6">게임정보</a>
+            
+      
+      </li>
+      
+      <li>
+        <p id="history_list_content">5 - kw_test VS kw</p>
+        
+            
+                <a class="history_list_detail" href="http://127.0.0.1:8000/game/revenge/5">revenge</a>
+                <a class="history_list_detail" href="http://127.0.0.1:8000/game/detail_revenge/5"> 게임정보 </a>
+        
+      
+      </li>
+      
+      <li>
+        <p id="history_list_content">4 - kw_test VS kw</p>
+        
+            
+                <a class="history_list_detail" href="http://127.0.0.1:8000/game/revenge/4">revenge</a>
+                <a class="history_list_detail" href="http://127.0.0.1:8000/game/detail_revenge/4"> 게임정보 </a>
+        
+      
+      </li>
+      
+      <li>
+        <p id="history_list_content">3 - kw VS kw_test</p>
+        
+            
+                
+                <p>결과 : 무승부</p>
+                
+                <a class="history_list_detail" href="http://127.0.0.1:8000/game/detail_result/3/"> 게임정보 </a>
+            
+        
+      </li>
+      
+      <li>
+        <p id="history_list_content">2 - kw VS kw_test</p>
+        
+            
+                <form action="http://127.0.0.1:8000/game/delete/2" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="iRVCUCKTpiekiytMviTOIRi5yRdXFVxQQIREH6SpjkIa52tJpuHwwy3AJk3FzbSL">
+                <p id="history_list_result">진행 중...<button class="delete_btn">게임취소</button></p>
+                </form>
+                <a class="history_list_detail" href="http://127.0.0.1:8000/game/progressing_result/2">게임정보</a>
+            
+      
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    
+    <footer>
+        <span>피로그래밍 21기 카드게임 세션 1조</span>
+    </footer>
+
+
+</body></html>
