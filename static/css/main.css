@@ -8,7 +8,7 @@
 :root {
     --main-color: #11109B;
     --gray-color: #A6A7AD;
-    --main-font: "DungHeunMo";
+    --main-font: "DungGeunMo";
     --main-border: 2px solid black;
 }
 
@@ -24,7 +24,7 @@ a {
 
 
 nav {
-    background-color: blue;
+    background-color: var(--main-color);
     display: flex;
     align-items: center;
     height: 8vh;
@@ -48,7 +48,7 @@ nav > div {
 /*footer*/
 footer{
     height: 8vh;
-    background-color: blue;
+    background-color: var(--main-color);
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -63,7 +63,7 @@ footer > span{
 section {
     height: 84vh;
     /*배경사진추가*/
-    background-color: blue;
+    background-color: var(--main-color);
     background-size: cover;
 }
 
@@ -100,7 +100,7 @@ section {
 }
 
 .btn_game, .btn_history, .btn_signup {
-    background-color: blue;
+    background-color: var(--main-color);
     cursor: pointer;
     padding: 5px 20px;
     border-radius: 15px;

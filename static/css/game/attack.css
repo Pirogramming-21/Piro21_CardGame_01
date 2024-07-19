@@ -7,26 +7,72 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'DungGeunMo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .attack__container {
-    background-color: rgb(236, 151, 151);
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-}
+    background-image: url(../../images/blue_screen.png);
+    background-size : contain ;
+    background-repeat: no-repeat;
+    background-position: center;
 
+}
 .attack__form{
-    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: azure;
+    padding: 30px 200px;
+    background-color: transparent;
+    background-image: url('../../images/game_background.jpg');
+    background-size :  contain;
+    background-repeat: no-repeat;
+    background-position: center;
     gap: 10px;
 }
+
+.attack_form p {
+    font-family: var(--main-font);
+    margin-bottom: 10px;
+
+}
+
+#id_attacker_card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: var(--main-font);
+}
+#id_attacker_card div {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+#id_revenger {
+    font-family: var(--main-font);
+}
+
 #attack__title {
-    font-family: 'MoveSans-Bold';
+    font-family: var(--main-font);
     font-size: 1.3rem;
 }
 
+#card__title {
+    font-family: "DungGeunMo";
+}
+
+.submit_btn {
+    margin-top: 5px;
+    padding: 3px;
+    font-family: var(--main-font);
+}
