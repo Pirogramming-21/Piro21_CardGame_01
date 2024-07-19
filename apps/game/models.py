@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import User
+from users.models import Users
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 
@@ -9,7 +9,7 @@ class Game(models.Model):
     bigorsmall = models.BooleanField()
 
     attacker = models.ForeignKey(
-        User,
+        Users,
         on_delete=models.CASCADE,
         null=True,
         blank=True,
@@ -20,7 +20,7 @@ class Game(models.Model):
     )
 
     revenger = models.ForeignKey(
-        User,
+        Users,
         on_delete=models.CASCADE,
         null=True,
         blank=True,
