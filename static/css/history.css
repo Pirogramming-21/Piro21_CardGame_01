@@ -1,0 +1,104 @@
+#history_section {
+    height: 84vh;
+    background-color: var(--main-color);
+    background-image: none;
+}
+#history_list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 84vh;
+    overflow: hidden;
+}
+
+#history_list_title {
+    background-color: var(--main-color);
+    margin-top: 30px;
+    color: white;
+    font-family: var(--main-font);
+    font-size: 40px;
+    /* padding-left: 70px; */
+    border-bottom: 2px solid;
+    padding-bottom: 26px;
+}
+
+#history_list_player {
+    background-color: var(--main-color);
+    margin-left: 50px;
+    margin-right: auto;
+    color: white;
+    font-family: var(--main-font);
+    font-size: 23px;
+    background-color: var(--gray-color);
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+#game_bg__container{
+    margin-top: 20px;
+    padding: 50px 60px;
+    padding-bottom: 30px;
+    background-image: url(../images/game_background.jpg);
+    background-size :  contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: auto;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.game_bg {
+    
+    margin-top: 60px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#history_list_sum {
+    padding-left: 85px;
+    padding-right:125px;
+}
+ul {
+    padding: 0;
+}
+li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 5px;
+}
+
+#history_list_sum li a {
+    color: black;
+    font-family: var(--main-font);
+}
+
+#history_list_content, #history_list_result {
+    font-family: var(--main-font);
+}
+
+p {
+    font-family: var(--main-font);
+
+}
+
+.delete_btn {
+    font-size: .8rem;
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: center; 
+    background-color: var(--gray-color);
+    border: none; 
+    border-radius: 5px;
+    text-decoration: none; 
+    cursor: pointer;
+    color: white;
+    font-family: var(--main-font);
+    margin: 5px 0;
+}

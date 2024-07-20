@@ -1,0 +1,57 @@
+
+.login-container {
+    height: 84vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: var(--main-font);
+}
+
+.login-h1 {
+    width: 37%;
+    height: 35%;
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 200px;
+    background-color: transparent;
+    background-image: url('../images/game_background.jpg');
+    background-size :  contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.login-container h1 {
+    text-align: center;
+    margin-bottom: 45px;
+    font-family: var(--main-font);
+    font-size: 30px;
+}
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.login_form p {
+    margin-bottom: 20px;
+}
+
+.login_form label {
+    padding: 1px 5px;
+    margin: 10px;
+}
+
+.login_btn {
+    margin-right: 110px;
+    margin-top: 10px;
+    padding: 5px 15px;
+    background-color: var(--gray-color);
+    color: white;
+    border: none;
+    font-family: var(--main-font);
+}

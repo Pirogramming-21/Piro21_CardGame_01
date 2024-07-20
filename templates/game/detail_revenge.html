@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/game/detail_revenge.css' %}">
+</head>
+{% endblock %}
+{% block content %}
+    <section>
+        <div class="detail_container">
+            <div class="revenge_versus">
+                {{game.id}} - {{game.attacker}} VS {{game.revenger}}
+            </div>
+            <div class="do_next">
+                <form action = "{% url 'game:revenge' game.pk %}" method="get">
+                    {% csrf_token %}
+                    <button class="btn">대응하기</button>
+                    <a href="{% url 'game:history' %}" class="btn">전적목록</a>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

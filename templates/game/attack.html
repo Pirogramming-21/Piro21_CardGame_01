@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/game/attack.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="attack__container">
+        <div class="attack__form">
+            <div id="attack__title">ATTACK</div>
+            <div id="card__title">내가 고른 카드</div>
+            <div id="form__container">
+                <form action="{% url 'game:attack' %}" method="POST" class="attack_form">
+                    {% csrf_token %}{{form.as_p}}
+                    
+                    <hr/>
+                    <hr/>
+                    <button type="submit" class="submit_btn">Attack</button>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

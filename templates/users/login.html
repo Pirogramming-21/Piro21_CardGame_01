@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="login-container">
+        <div class="login-h1">
+            <h1>로그인</h1>
+            <form method="post" class="login_form"> 
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="login_btn">Login</button>
+            </form>
+        </div>
+    </div>
+    {% if form.errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,157 @@
+@font-face {
+    font-family: 'DungGeunMo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --main-color: #11109B;
+    --gray-color: #A6A7AD;
+    --main-font: "DungGeunMo";
+    --main-border: 2px solid black;
+}
+
+/*nav*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: white;
+    font-family: var(--main-font);
+}
+
+
+nav {
+    background-color: var(--main-color);
+    display: flex;
+    align-items: center;
+    height: 8vh;
+    justify-content:space-between;
+    display: flex; 
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+
+}
+
+nav > div {
+    margin: 0 10rem;
+    color: white;
+    font-family: var(--main-font);
+}
+
+#nav_menu {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    margin: 0;
+    margin-right: 30px;
+}
+
+#nav_title {
+    display: flex;
+    align-items: flex-start;
+    margin-left: 20px;
+}
+
+#nav_menu > a, #nav_title > a {
+    color:white;
+    text-decoration: none;
+}
+
+/*footer*/
+footer{
+    height: 8vh;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 30px;
+}
+
+footer > span{
+    color: white;
+    font-family: var(--main-font);
+
+}
+
+/**/
+section {
+    height: 84vh;
+    /*배경사진추가*/
+    background-color: var(--main-color);
+    background-image: url(../images/blue_screen.png);
+    background-size: cover;
+}
+
+.shadow_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 200px;
+    background-color: transparent;
+    background-image: url('../images/game_background.jpg');
+    background-size :  contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    gap: 10px;
+    border: none;
+    border-radius: 0;
+}
+
+.main_container{
+    height: 84vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+/*
+.main_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+
+}
+    */
+
+.main_username {
+    background-color: var(--gray-color);
+    color: white;
+    padding: 5px 10px;
+    font-family: var(--main-font);
+
+}
+
+.main_title>p{
+    font-size: 60px;
+    font-weight: bold;
+    margin-top: 20px;
+    font-family: var(--main-font);
+
+}
+
+
+.btns {
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+
+}
+
+.btn_game, .btn_history, .btn_signup {
+    background-color: var(--main-color);
+    cursor: pointer;
+    padding: 5px 20px;
+    border-radius: 15px;
+}
+
+.btn_game > a, .btn_history > a{
+    text-decoration: none;
+}

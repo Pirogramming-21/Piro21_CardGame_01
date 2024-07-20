@@ -1,0 +1,21 @@
+{% block content %}
+<nav>
+    <div id="nav_title">
+        <a href='/'>Pirogrammer Card Game</a>
+    </div>
+    {% if user.is_authenticated %}<!--로그인한 상태일 때 출력-->
+    <div id="nav_menu">
+        <a href='{% url "game:attack" %}'>게임하기</a>
+        <a href='{% url "game:ranking" %}'>랭킹보기</a>
+        <a href='{% url "users:logout" %}'>로그아웃</a>
+    </div>
+    {% else %}<!--로그인하지 않은 상태일 때 출력-->
+    <div id="nav_menu">
+        <a href='{% url "users:login" %}'>로그인</a>
+        {% load socialaccount %}
+        <a href="{% provider_login_url 'naver' %}">네이버로그인</a>
+        <a href='{% url "users:signup" %}'>회원가입</a>
+    </div>
+    {% endif %}
+</nav>
+{% endblock %}
